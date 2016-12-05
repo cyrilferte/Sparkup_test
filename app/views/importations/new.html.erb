@@ -1,0 +1,5 @@
+<%= form_for @importation, url: {action: "create"} do |f| %>
+    <%= hidden_field_tag 'importation[file]' %>
+    <%= f.file_field :file %>
+    <%= f.submit ("send") %>
+<% end %>

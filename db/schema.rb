@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205065228) do
+ActiveRecord::Schema.define(version: 20161205070504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,17 @@ ActiveRecord::Schema.define(version: 20161205065228) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "importation_id"
+    t.index ["importation_id"], name: "index_contacts_on_importation_id", using: :btree
   end
 
+  create_table "importations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "file"
+  end
+
+  add_foreign_key "contacts", "importations"
 end

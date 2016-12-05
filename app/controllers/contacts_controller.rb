@@ -1,5 +1,9 @@
 class ContactsController < ApplicationController
     def index
-        @contacts = Contact.all.order(:created_at).reverse
+        @contacts = Contact.all
     end
+    
+    
+    
+    
 end

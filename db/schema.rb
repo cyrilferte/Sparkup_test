@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205070504) do
+ActiveRecord::Schema.define(version: 20161204202324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,5 +31,22 @@ ActiveRecord::Schema.define(version: 20161205070504) do
     t.string   "file"
   end
 
+  create_table "rejects", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "reason"
+    t.integer  "importation_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["importation_id"], name: "index_rejects_on_importation_id", using: :btree
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "contacts", "importations"
+  add_foreign_key "rejects", "importations"
 end

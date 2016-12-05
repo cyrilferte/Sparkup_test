@@ -23,7 +23,8 @@ gem 'jbuilder', '~> 2.5'
 
 #Spesific gem for the test
 #******
-
+#gem uploader
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 
 
 #test gem
